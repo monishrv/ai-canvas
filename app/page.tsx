@@ -2,14 +2,17 @@
 
 import dynamic from "next/dynamic"
 
-const FlowchartCanvas = dynamic(() => import("@/components/flowchart-canvas"), {
-  ssr: false,
-  loading: () => (
-    <div className="fixed inset-0 flex items-center justify-center bg-background">
-      <div className="text-muted-foreground">Loading canvas...</div>
-    </div>
-  ),
-})
+const FlowchartCanvas = dynamic(
+  () => import("@/components/flowchart-canvas").then((mod) => mod.default),
+  {
+    ssr: false,
+    loading: () => (
+      <div style={{ position: "fixed", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#fff" }}>
+        <p style={{ color: "#666" }}>Loading canvas...</p>
+      </div>
+    ),
+  }
+)
 
 export default function Home() {
   return <FlowchartCanvas />
