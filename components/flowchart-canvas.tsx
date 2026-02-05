@@ -1,5 +1,7 @@
 "use client"
 
+console.log("[v0] flowchart-canvas.tsx loading")
+
 import { useState, useRef } from "react"
 import { Tldraw, createShapeId, Editor } from "tldraw"
 import "tldraw/tldraw.css"
@@ -21,6 +23,7 @@ interface FlowchartData {
 }
 
 export default function FlowchartCanvas() {
+  console.log("[v0] FlowchartCanvas component rendered")
   const [inputText, setInputText] = useState("")
   const [isGenerating, setIsGenerating] = useState(false)
   const editorRef = useRef<Editor | null>(null)
